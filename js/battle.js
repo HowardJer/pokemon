@@ -53,8 +53,24 @@ document.querySelector(".game-button").addEventListener("click", function () {
             document.querySelector('.cpu .health').innerHTML = cpuHP;
             // battlelog.innerHTML += '<li>' + playerName + ' inflicted ' + playerAttack + ' points of damage, and '
             //     + cpuName + ' inflicted ' + cpuAttack + ' points of damage.' + '</li>';
+        game.player = player;
+        player.pokemon.hp = (playerHP);
+        game.cpu = cpu;
+        cpu.pokemon.hp = cpuHP;
+        Cookies.set("game", JSON.stringify(game));
+
+
+
+        }
         
-        }else document.querySelector(".battlelog").innerHTML = "Battle Resulted in a Draw! Reset to Start Again";
+    if(playerHP<=0 && cpuHP <=0) {
+        battlelog.innerHTML = "Battle ended in a draw!";
+    }else if(cpuHP <= 0) {
+        battlelog.innerHTML = "You Won!!!!!!";
+    }else if(cpuHP <= 0) {
+        battlelog.innerHTML = "Your Enemy Won!!!!!!";
+    }
+        
 
         
         
@@ -68,21 +84,7 @@ document.querySelector(".game-button").addEventListener("click", function () {
 
     });
     
-    function score(index) {
-        // const randomNumber = Math.floor(Math.random() * pokemon.length);
-        const game = {
-            player: {
-                pokemon: pokemon[index],
-                currentHealth: pokemon[index].hp
-            },
-            cpu: {
-                pokemon: pokemon[randomNumber],
-                currentHealth: pokemon[randomNumber].hp
-            }
-        }
-    
-        Cookies.set("game", JSON.stringify(game));
-    }
+   
 
 
 /*    
