@@ -9,10 +9,6 @@
         - Redirect the user to the battle page (https://www.w3schools.com/howto/howto_js_redirect_webpage.asp)
     */
 
-
-
-
-
 function startGame(index) {
     const randomNumber = Math.floor(Math.random() * pokemon.length);
     const game = {
@@ -24,26 +20,20 @@ function startGame(index) {
             pokemon: pokemon[randomNumber],
             currentHealth: pokemon[randomNumber].hp
         }
-
-
-
-
     }
+
     Cookies.set("game", JSON.stringify(game));
-   
-
-
-
-
+    location.href = "battle.html"
 }
 
 
 // Map function to create a choice button for each Pokemon in the list
 pokemon.map(function (choice, index) {
-    // create a div in memory with the image, name and basic stats
+
+    // create a div in memory 
     let div = document.createElement('div');
 
-    // popuplate the div
+    // populate the div with the image, name and basic stats
     div.innerHTML = `
         <img src="${choice.image}">
         <h3>${choice.name}</h3>
@@ -53,9 +43,7 @@ pokemon.map(function (choice, index) {
     // make the div clickable
     div.addEventListener('click', function () {
         startGame(index);
-        window.open("battle.html");
 
-        
     });
 
     // then append the div to the .choose-pokemon container
